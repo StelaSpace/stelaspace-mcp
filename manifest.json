@@ -1,0 +1,49 @@
+{
+  "manifest_version": "0.2",
+  "name": "stelaspace-mcp",
+  "display_name": "StelaSpace",
+  "version": "1.0.2",
+  "description": "Publish AI-generated HTML (dashboards, reports, docs) to permanent, sandboxed, shareable links.",
+  "long_description": "StelaSpace is an HTML-first knowledge base for the artifacts AI agents create. This MCP server publishes HTML files straight from your editor — it takes a file path and uploads from disk, so even large data-heavy reports work (file contents can't pass as tool arguments). Each artifact gets a permanent, sandboxed, access-controlled link your team can share. Free tier available.",
+  "author": {
+    "name": "StelaSpace",
+    "url": "https://stelaspace.com"
+  },
+  "homepage": "https://stelaspace.com",
+  "documentation": "https://stelaspace.com/docs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/StelaSpace/stelaspace-mcp"
+  },
+  "license": "MIT",
+  "keywords": ["html", "publishing", "dashboard", "artifacts", "knowledge-base"],
+  "server": {
+    "type": "node",
+    "entry_point": "index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": ["${__dirname}/index.js"],
+      "env": {
+        "STELASPACE_API_KEY": "${user_config.api_key}"
+      }
+    }
+  },
+  "user_config": {
+    "api_key": {
+      "type": "string",
+      "title": "StelaSpace API key",
+      "description": "Starts with ss_sk_ — create one at stelaspace.com under Settings → API Keys",
+      "sensitive": true,
+      "required": true
+    }
+  },
+  "tools": [
+    { "name": "publish_file", "description": "Publish an HTML file from disk to StelaSpace; returns the permanent URL. Reusing a slug publishes a new version." },
+    { "name": "list_spaces", "description": "List the spaces in your team." },
+    { "name": "list_documents", "description": "List documents in a space, with optional search." }
+  ],
+  "compatibility": {
+    "platforms": ["darwin", "win32", "linux"],
+    "runtimes": { "node": ">=18" }
+  }
+}
