@@ -49,17 +49,5 @@ Then ask the agent to build and publish a report, e.g.
 ## Environment
 
 - `STELASPACE_API_KEY` (required) — your `ss_sk_` key.
-- `STELASPACE_API_URL` (optional) — defaults to `https://stelaspace.com`. Set to
-  `http://localhost:3000` to target a local dev server.
-
-## Local development
-
-To run from source (e.g. against a local StelaSpace dev server), point the client at
-the file directly and override the API URL:
-
-```bash
-claude mcp add stelaspace-dev --scope user \
-  --env STELASPACE_API_KEY=ss_sk_your_key \
-  --env STELASPACE_API_URL=http://localhost:3000 \
-  -- node /absolute/path/to/mcp-server/index.js
-```
+- `STELASPACE_API_URL` (optional) — override the API endpoint. Defaults to
+  `https://stelaspace.com`; most users never need to set this.
