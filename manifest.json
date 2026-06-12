@@ -2,7 +2,7 @@
   "manifest_version": "0.2",
   "name": "stelaspace-mcp",
   "display_name": "StelaSpace",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Publish AI-generated HTML (dashboards, reports, docs) to permanent, sandboxed, shareable links.",
   "long_description": "StelaSpace is an HTML-first knowledge base for the artifacts AI agents create. This MCP server publishes HTML files straight from your editor — it takes a file path and uploads from disk, so even large data-heavy reports work (file contents can't pass as tool arguments). Each artifact gets a permanent, sandboxed, access-controlled link your team can share. Free tier available.",
   "author": {

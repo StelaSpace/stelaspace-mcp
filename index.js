@@ -13,10 +13,13 @@ import { basename } from "node:path";
 const API_KEY = process.env.STELASPACE_API_KEY;
 const API_URL = (process.env.STELASPACE_API_URL || "https://stelaspace.com").replace(/\/+$/, "");
 
-if (!API_KEY) {
-  console.error("STELASPACE_API_KEY is required (your ss_sk_ key). Set it in the MCP server's env.");
-  process.exit(1);
-}
+// Don't exit when the key is missing: directory inspectors (Glama, Smithery)
+// and curious users start the server bare to introspect its tools. Warn here,
+// fail helpfully at call time instead.
+const NO_KEY_MSG =
+  "STELASPACE_API_KEY is not set. Create an API key (starts with ss_sk_) at " +
+  "https://stelaspace.com under Settings → API Keys, then set it in the MCP server's env.";
+if (!API_KEY) console.error(`Warning: ${NO_KEY_MSG}`);
 
 const authHeaders = { Authorization: `Bearer ${API_KEY}` };
 const text = (t, structured) => ({
@@ -29,7 +32,7 @@ async function apiJson(res) {
   return res.json().catch(() => ({}));
 }
 
-const server = new McpServer({ name: "stelaspace", version: "1.0.0" });
+const server = new McpServer({ name: "stelaspace", version: "1.0.3" });
 
 server.registerTool(
   "publish_file",
@@ -50,6 +53,7 @@ server.registerTool(
     },
   },
   async ({ path, spaceSlug, title, slug, tags, visibility }) => {
+    if (!API_KEY) return fail(NO_KEY_MSG);
     let buf;
     try {
       buf = await readFile(path);
@@ -84,6 +88,7 @@ server.registerTool(
     inputSchema: {},
   },
   async () => {
+    if (!API_KEY) return fail(NO_KEY_MSG);
     const res = await fetch(`${API_URL}/api/v1/spaces`, { headers: authHeaders });
     const data = await apiJson(res);
     if (!res.ok) return fail(`List spaces failed (${res.status}): ${data.error || res.statusText}`);
@@ -103,6 +108,7 @@ server.registerTool(
     },
   },
   async ({ spaceSlug, query }) => {
+    if (!API_KEY) return fail(NO_KEY_MSG);
     const res = await fetch(`${API_URL}/api/v1/documents?spaceSlug=${encodeURIComponent(spaceSlug)}&limit=100`, {
       headers: authHeaders,
     });

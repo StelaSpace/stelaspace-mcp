@@ -1,6 +1,6 @@
 {
   "name": "stelaspace-mcp",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Local MCP server for publishing HTML files to StelaSpace from Claude Code, Codex, and other MCP clients — permanent, sandboxed, shareable links for AI-generated artifacts.",
   "mcpName": "io.github.StelaSpace/stelaspace-mcp",
   "type": "module",
