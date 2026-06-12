@@ -1,0 +1,14 @@
+{
+  "name": "stelaspace",
+  "version": "1.0.3",
+  "description": "Publish AI-generated HTML (dashboards, reports, docs) to permanent, sandboxed, shareable links.",
+  "author": {
+    "name": "StelaSpace",
+    "url": "https://stelaspace.com"
+  },
+  "homepage": "https://stelaspace.com",
+  "repository": "https://github.com/StelaSpace/stelaspace-mcp",
+  "license": "MIT",
+  "keywords": ["mcp", "html", "publishing", "dashboard", "artifacts", "knowledge-base"],
+  "mcpServers": "./.mcp.json"
+}

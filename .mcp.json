@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "stelaspace": {
+      "command": "npx",
+      "args": ["-y", "stelaspace-mcp"],
+      "env": {
+        "STELASPACE_API_KEY": "${STELASPACE_API_KEY}"
+      }
+    }
+  }
+}
