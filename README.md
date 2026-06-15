@@ -1,5 +1,7 @@
 # stelaspace-mcp
 
+[![stelaspace-mcp MCP server](https://glama.ai/mcp/servers/StelaSpace/stelaspace-mcp/badges/score.svg)](https://glama.ai/mcp/servers/StelaSpace/stelaspace-mcp)
+
 A local [MCP](https://modelcontextprotocol.io) server for publishing HTML files to
 [StelaSpace](https://stelaspace.com) from coding agents that work with your local
 files — **Claude Code** and **Codex**.
