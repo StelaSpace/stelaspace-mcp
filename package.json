@@ -7,6 +7,10 @@
   "bin": {
     "stelaspace-mcp": "index.js"
   },
+  "scripts": {
+    "build": "echo \"stelaspace-mcp is plain JS — no build step\"",
+    "start": "node index.js"
+  },
   "files": [
     "index.js",
     "README.md"
